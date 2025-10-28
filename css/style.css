@@ -1043,6 +1043,25 @@ body {
     margin-top: 100px;
 }
 
+.running-text-faq .running-text-track {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    gap: 95px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 100%;
+    animation: scroll 30s linear infinite;
+}
+
+.running-text-faq .running-text-track span {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #4a4237;
+}
+
 /* === FAQ - TABLET (до 1024px) === */
 @media screen and (max-width: 1024px) {
     .faq {
