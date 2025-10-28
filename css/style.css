@@ -1047,7 +1047,7 @@ body {
     display: flex;
     align-items: center;
     height: 60px;
-    gap: 68px;
+    gap: 40px;
     white-space: nowrap;
     flex-shrink: 0;
     min-width: 100%;
