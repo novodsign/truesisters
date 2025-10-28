@@ -515,14 +515,15 @@ body {
 
 .about-content {
     display: flex;
-    gap: 100px;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
 }
 
 .about-images {
     display: flex;
     gap: 10px;
-    flex-shrink: 0;
+    justify-content: center;
 }
 
 .about-image {
@@ -536,7 +537,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding-top: 20px;
+    max-width: 600px;
 }
 
 .about-item {
@@ -588,12 +589,16 @@ body {
     }
 
     .about-content {
-        gap: 50px;
+        gap: 40px;
     }
 
     .about-image {
         width: 200px;
         height: 250px;
+    }
+
+    .about-text {
+        max-width: 500px;
     }
 }
 
@@ -654,13 +659,7 @@ body {
     }
 
     .about-content {
-        flex-direction: column;
         gap: 30px;
-        align-items: center;
-    }
-
-    .about-images {
-        justify-content: center;
     }
 
     .about-image {
@@ -670,7 +669,7 @@ body {
 
     .about-text {
         gap: 30px;
-        padding-top: 0;
+        max-width: 100%;
     }
 
     .about-number,
