@@ -454,10 +454,11 @@ body {
 }
 
 .product-link {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     text-decoration: none;
     position: relative;
-    padding: 15px 50px;
+    padding: 15px 0;
 }
 
 .product-link span {
@@ -469,14 +470,13 @@ body {
     position: relative;
     z-index: 1;
     text-decoration: none;
-    margin-left: 8px;
 }
 
 /* Контейнер для SVG обводки */
 .product-link svg {
     position: absolute;
     top: 50%;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;
     height: 37px;
