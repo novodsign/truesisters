@@ -829,7 +829,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
     padding-top: 60px;
 }
 
@@ -837,6 +836,7 @@ body {
     width: 100%;
     max-width: 500px;
     height: auto;
+    margin-bottom: 7px;
 }
 
 .certificates-image img {
@@ -851,11 +851,12 @@ body {
     font-weight: 400;
     text-align: center;
     color: #4a4237;
+    margin-bottom: 67px;
 }
 
 .certificates-button {
     display: inline-block;
-    padding: 17px 90px;
+    padding: 17px 74px;
     border: 1px solid #4a4237;
     border-radius: 100px;
     font-family: 'Roboto', sans-serif;
@@ -866,7 +867,6 @@ body {
     text-decoration: none;
     background-color: transparent;
     transition: all 0.3s ease;
-    margin-top: 20px;
 }
 
 .certificates-button:hover {
