@@ -456,7 +456,7 @@ body {
     display: inline-block;
     text-decoration: none;
     position: relative;
-    padding: 15px 60px;
+    padding: 15px 50px;
 }
 
 .product-link span {
@@ -473,9 +473,9 @@ body {
 .product-link svg {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
-    width: 221px;
+    width: 200px;
     height: 37px;
     pointer-events: none;
 }
