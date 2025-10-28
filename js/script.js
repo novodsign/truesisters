@@ -11,10 +11,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Дублирование бегущей строки для бесконечной анимации
-const runningText = document.querySelector('.running-text-content');
-if (runningText) {
-    const clone = runningText.cloneNode(true);
-    runningText.parentElement.appendChild(clone);
-}
