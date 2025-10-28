@@ -471,23 +471,40 @@ body {
     z-index: 1;
 }
 
-/* Рисованная обводка овалом (НЕ замкнутая, точно как на макете) */
-.product-link::before {
-    content: '';
+/* Контейнер для SVG обводки */
+.product-link svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: url('../images/button-outline.svg') no-repeat center;
-    background-size: 240px 70px;
-    opacity: 0;
+    width: 221px;
+    height: 37px;
+    pointer-events: none;
 }
 
-/* Обводка всегда видна (без анимации) */
-.product-link::before {
-    opacity: 1;
+.product-link svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+/* В спокойном состоянии - полностью отрисована */
+.product-link svg path {
+    stroke-dashoffset: 0;
+}
+
+/* При наведении - анимация отрисовки */
+.product-link:hover svg path {
+    animation: drawStroke 0.8s ease-in-out;
+}
+
+@keyframes drawStroke {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 /* === ABOUT SECTION === */
