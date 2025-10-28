@@ -522,11 +522,67 @@ body {
     justify-content: center;
 }
 
+.about-image-wrapper {
+    position: relative;
+}
+
 .about-image {
     width: 245px;
     height: 307px;
     border-radius: 16px;
     object-fit: cover;
+}
+
+/* Декоративные сердечки */
+.heart {
+    position: absolute;
+    opacity: 0;
+    animation: heartFloat 4s ease-in-out infinite;
+}
+
+/* Позиционирование сердечек */
+.heart-1 {
+    left: -40px;
+    top: 120px;
+    animation-delay: 0s;
+}
+
+.heart-2 {
+    left: -25px;
+    bottom: 100px;
+    animation-delay: 1.5s;
+}
+
+.heart-3 {
+    right: -35px;
+    top: 80px;
+    animation-delay: 0.8s;
+}
+
+.heart-4 {
+    right: -40px;
+    top: 140px;
+    animation-delay: 2.2s;
+}
+
+/* Анимация появления и исчезновения сердечек */
+@keyframes heartFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
 }
 
 .about-text {
