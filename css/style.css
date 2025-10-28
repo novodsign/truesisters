@@ -403,6 +403,10 @@ body {
     color: rgba(74, 66, 55, 0.75);
 }
 
+.section-header-no-line {
+    border-bottom: none;
+}
+
 /* === BESTSELLERS SECTION === */
 .bestsellers {
     background-color: #faf9f5;
