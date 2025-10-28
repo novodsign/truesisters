@@ -471,59 +471,35 @@ body {
     z-index: 1;
 }
 
-/* Рисованная обводка овалом */
+/* Рисованная обводка овалом (НЕ замкнутая) */
 .product-link::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid #f5cfcc;
-    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='220' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 10,30 Q 10,10 55,8 Q 110,5 165,8 Q 210,10 210,30 Q 210,50 165,52 Q 110,55 55,52 Q 15,50 15,30' stroke='%23f5cfcc' stroke-width='2' fill='none' stroke-linecap='round' /%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     opacity: 0;
-    transform: scale(0.8) rotate(-5deg);
-}
-
-.product-link::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid #f5cfcc;
-    border-radius: 50%;
-    transform: rotate(-5deg);
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
 }
 
 /* Анимация при наведении - рисует обводку */
 .product-link:hover::before {
-    animation: drawCircle 0.6s ease forwards;
+    animation: drawStroke 0.8s ease forwards;
 }
 
-@keyframes drawCircle {
+@keyframes drawStroke {
     0% {
         opacity: 0;
-        transform: scale(0.8) rotate(-5deg);
-        clip-path: polygon(0% 50%, 0% 50%, 0% 50%, 0% 50%);
-    }
-    25% {
-        opacity: 1;
-        clip-path: polygon(0% 50%, 50% 0%, 50% 0%, 0% 50%);
-    }
-    50% {
-        clip-path: polygon(0% 50%, 100% 0%, 100% 50%, 0% 50%);
-    }
-    75% {
-        clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 50%);
+        clip-path: inset(0 100% 0 0);
     }
     100% {
         opacity: 1;
-        transform: scale(1) rotate(-5deg);
-        clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 100%);
+        clip-path: inset(0 0 0 0);
     }
 }
 
