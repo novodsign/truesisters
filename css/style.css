@@ -464,6 +464,7 @@ body {
     color: #4a4237;
     position: relative;
     z-index: 1;
+    text-decoration: none;
 }
 
 /* Контейнер для SVG обводки */
