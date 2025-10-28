@@ -836,7 +836,7 @@ body {
     width: 100%;
     max-width: 500px;
     height: auto;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
 }
 
 .certificates-image img {
@@ -851,7 +851,7 @@ body {
     font-weight: 400;
     text-align: center;
     color: #4a4237;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .certificates-button {
