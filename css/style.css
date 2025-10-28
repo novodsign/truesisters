@@ -455,13 +455,10 @@ body {
 }
 
 .product-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    display: inline-block;
     text-decoration: none;
     position: relative;
-    padding: 10px 0;
+    padding: 15px 60px;
 }
 
 .product-link span {
@@ -470,20 +467,64 @@ body {
     font-weight: 400;
     text-transform: lowercase;
     color: #4a4237;
-    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
-.product-arrow {
+/* Рисованная обводка овалом */
+.product-link::before {
+    content: '';
     position: absolute;
-    width: 219px;
-    height: 35px;
-    z-index: -1;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #f5cfcc;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
 }
 
-.product-link:hover span {
-    color: #f5cfcc;
+.product-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #f5cfcc;
+    border-radius: 50%;
+    transform: rotate(-5deg);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* Анимация при наведении - рисует обводку */
+.product-link:hover::before {
+    animation: drawCircle 0.6s ease forwards;
+}
+
+@keyframes drawCircle {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+        clip-path: polygon(0% 50%, 0% 50%, 0% 50%, 0% 50%);
+    }
+    25% {
+        opacity: 1;
+        clip-path: polygon(0% 50%, 50% 0%, 50% 0%, 0% 50%);
+    }
+    50% {
+        clip-path: polygon(0% 50%, 100% 0%, 100% 50%, 0% 50%);
+    }
+    75% {
+        clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 50%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(-5deg);
+        clip-path: polygon(0% 50%, 100% 0%, 100% 100%, 0% 100%);
+    }
 }
 
 /* === ABOUT SECTION === */
@@ -620,13 +661,12 @@ body {
         height: 180px;
     }
 
-    .product-link span {
-        font-size: 15px;
+    .product-link {
+        padding: 12px 50px;
     }
 
-    .product-arrow {
-        width: 180px;
-        height: 30px;
+    .product-link span {
+        font-size: 15px;
     }
 
     .about {
@@ -676,6 +716,14 @@ body {
 
     .product-image {
         height: 250px;
+    }
+
+    .product-link {
+        padding: 10px 40px;
+    }
+
+    .product-link span {
+        font-size: 14px;
     }
 
     .about-images {
