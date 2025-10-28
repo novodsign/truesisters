@@ -73,27 +73,11 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
-    position: relative;
     transition: color 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #f5cfcc;
-    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
     color: #f5cfcc;
-}
-
-.nav-link:hover::after {
-    width: 100%;
 }
 
 .logo {
