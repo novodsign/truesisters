@@ -153,7 +153,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Running Text - правильная бесконечная анимация */
+/* Running Text - настоящая бесконечная анимация */
 .running-text {
     position: absolute;
     bottom: 0;
@@ -163,24 +163,21 @@ body {
     height: 60px;
     overflow: hidden;
     z-index: 10;
+    display: flex;
 }
 
 .running-text-track {
-    display: flex;
-    width: fit-content;
-    animation: scroll 25s linear infinite;
-}
-
-.running-text-content {
     display: flex;
     align-items: center;
     height: 60px;
     gap: 95px;
     white-space: nowrap;
-    padding-right: 95px;
+    flex-shrink: 0;
+    min-width: 100%;
+    animation: scroll 30s linear infinite;
 }
 
-.running-text-content span {
+.running-text-track span {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 15px;
     font-weight: 400;
@@ -189,11 +186,11 @@ body {
 }
 
 @keyframes scroll {
-    0% {
+    from {
         transform: translateX(0);
     }
-    100% {
-        transform: translateX(-50%);
+    to {
+        transform: translateX(-100%);
     }
 }
 
