@@ -541,60 +541,79 @@ body {
 /* Декоративные сердечки */
 .heart {
     position: absolute;
-    opacity: 0;
-    animation: heartFloat 4s ease-in-out infinite;
+    opacity: 1;
+}
+
+.heart path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawHeart 3s ease-in-out infinite;
 }
 
 /* Позиционирование сердечек */
 .heart-1 {
-    width: 50px;
+    width: 30px;
     height: auto;
-    left: -60px;
+    left: -40px;
     top: 120px;
+}
+
+.heart-1 path {
     animation-delay: 0s;
 }
 
 .heart-2 {
-    width: 80px;
+    width: 50px;
     height: auto;
-    left: -90px;
+    left: -60px;
     bottom: 100px;
+}
+
+.heart-2 path {
     animation-delay: 1.5s;
 }
 
 .heart-3 {
-    width: 50px;
+    width: 30px;
     height: auto;
-    right: -60px;
+    right: -40px;
     top: 80px;
+}
+
+.heart-3 path {
     animation-delay: 0.8s;
 }
 
 .heart-4 {
-    width: 80px;
+    width: 50px;
     height: auto;
-    right: -90px;
+    right: -60px;
     top: 140px;
+}
+
+.heart-4 path {
     animation-delay: 2.2s;
 }
 
-/* Анимация появления и исчезновения сердечек */
-@keyframes heartFloat {
+/* Анимация рисования сердечек */
+@keyframes drawHeart {
     0% {
+        stroke-dashoffset: 200;
         opacity: 0;
-        transform: translateY(0) scale(0.8);
     }
-    20% {
+    10% {
         opacity: 1;
-        transform: translateY(-10px) scale(1);
     }
-    80% {
+    50% {
+        stroke-dashoffset: 0;
         opacity: 1;
-        transform: translateY(-20px) scale(1);
+    }
+    90% {
+        opacity: 1;
     }
     100% {
+        stroke-dashoffset: 200;
         opacity: 0;
-        transform: translateY(-30px) scale(0.8);
     }
 }
 
