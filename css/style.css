@@ -24,6 +24,8 @@
     --transition-base: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
     --transition-smooth: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-gentle: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-soft: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 
     /* Shadows */
     --shadow-soft: 0 4px 20px rgba(74, 66, 55, 0.08);
@@ -119,12 +121,11 @@ body::before {
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 400;
-    letter-spacing: 0.5px;
     color: var(--color-cream);
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
-    transition: var(--transition-base);
+    transition: var(--transition-gentle);
     position: relative;
 }
 
@@ -136,12 +137,11 @@ body::before {
     width: 0;
     height: 1px;
     background-color: var(--color-pink);
-    transition: var(--transition-base);
+    transition: var(--transition-gentle);
 }
 
 .nav-link:hover {
     color: var(--color-pink);
-    transform: translateY(-1px);
 }
 
 .nav-link:hover::after {
@@ -221,7 +221,7 @@ body::before {
 
 .hero-button {
     display: inline-block;
-    background: linear-gradient(135deg, var(--color-cream) 0%, #ffffff 100%);
+    background: var(--color-cream);
     color: var(--color-brown);
     padding: 20px 156px;
     border-radius: var(--radius-full);
@@ -230,35 +230,62 @@ body::before {
     font-weight: 400;
     text-transform: lowercase;
     text-decoration: none;
-    transition: var(--transition-smooth);
+    transition: var(--transition-soft);
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 1s ease-out 0.6s backwards;
+    animation: fadeInUp 1s ease-out 0.6s backwards, gentleBreath 4s ease-in-out 2s infinite;
 }
 
 .hero-button::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    transition: var(--transition-base);
+    background: linear-gradient(135deg, var(--color-pink-light) 0%, var(--color-pink) 100%);
+    opacity: 0;
+    transition: var(--transition-soft);
+}
+
+.hero-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+    transition: width 0.6s ease-out, height 0.6s ease-out;
 }
 
 .hero-button:hover {
-    background: linear-gradient(135deg, var(--color-pink-light) 0%, var(--color-pink) 100%);
-    transform: translateY(-4px) scale(1.03);
+    transform: translateY(-2px);
 }
 
 .hero-button:hover::before {
-    left: 100%;
+    opacity: 1;
+}
+
+.hero-button:hover::after {
+    width: 300px;
+    height: 300px;
 }
 
 .hero-button:active {
-    transform: translateY(-2px) scale(1.01);
+    transform: translateY(0px) scale(0.98);
     transition: var(--transition-fast);
+}
+
+@keyframes gentleBreath {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-1px) scale(1.005);
+    }
 }
 
 /* Running Text - настоящая бесконечная анимация */
@@ -531,11 +558,11 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 52px;
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
 }
 
 .product-content {
@@ -565,7 +592,7 @@ body::before {
     height: 234px;
     overflow: hidden;
     border-radius: var(--radius-sm);
-    transition: var(--transition-smooth);
+    transition: var(--transition-soft);
     position: relative;
 }
 
@@ -573,28 +600,24 @@ body::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(245, 207, 204, 0.1) 100%);
+    background: linear-gradient(180deg, transparent 50%, rgba(245, 207, 204, 0.15) 100%);
     opacity: 0;
-    transition: var(--transition-base);
-}
-
-.product-card:hover .product-image {
-    transform: translateY(-2px);
-}
-
-.product-card:hover .product-image::after {
-    opacity: 1;
+    transition: var(--transition-soft);
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
+}
+
+.product-card:hover .product-image::after {
+    opacity: 1;
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .product-link {
@@ -685,11 +708,11 @@ body::before {
     height: 307px;
     border-radius: var(--radius-md);
     object-fit: cover;
-    transition: var(--transition-smooth);
+    transition: var(--transition-soft);
 }
 
 .about-image-wrapper:hover .about-image {
-    transform: translateY(-5px) rotate(1deg);
+    transform: translateY(-3px) rotate(0.5deg);
 }
 
 /* Декоративные сердечки */
@@ -1005,11 +1028,11 @@ body::before {
     height: 100%;
     border-radius: var(--radius-lg);
     object-fit: cover;
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
 }
 
 .certificates-photo:hover .certificate-main-photo {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
 .certificate-outline {
@@ -1064,7 +1087,7 @@ body::before {
     color: var(--color-brown);
     text-decoration: none;
     background-color: transparent;
-    transition: var(--transition-smooth);
+    transition: var(--transition-gentle);
     position: relative;
     overflow: hidden;
 }
@@ -1077,17 +1100,22 @@ body::before {
     width: 0;
     height: 100%;
     background: linear-gradient(135deg, var(--color-pink-light), var(--color-pink));
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
     z-index: -1;
 }
 
 .certificates-button:hover {
     border-color: var(--color-pink);
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-2px);
 }
 
 .certificates-button:hover::before {
     width: 100%;
+}
+
+.certificates-button:active {
+    transform: translateY(0) scale(0.98);
+    transition: var(--transition-fast);
 }
 
 /* === CERTIFICATES - TABLET (до 1024px) === */
@@ -1212,22 +1240,22 @@ body::before {
     height: 248px;
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
 }
 
 .faq-photo:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
 .faq-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition-base);
+    transition: var(--transition-soft);
 }
 
 .faq-photo:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* Right side - Accordion */
@@ -1252,11 +1280,11 @@ body::before {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: var(--transition-gentle);
 }
 
 .faq-question:hover {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
 .faq-question span {
@@ -1430,7 +1458,7 @@ body::before {
     text-transform: lowercase;
     color: var(--color-brown);
     text-decoration: none;
-    transition: var(--transition-base);
+    transition: var(--transition-gentle);
     position: relative;
 }
 
@@ -1442,12 +1470,11 @@ body::before {
     width: 0;
     height: 2px;
     background-color: var(--color-pink);
-    transition: var(--transition-base);
+    transition: var(--transition-gentle);
 }
 
 .contacts-link:hover {
     color: var(--color-pink-dark);
-    transform: translateY(-2px);
 }
 
 .contacts-link:hover::after {
